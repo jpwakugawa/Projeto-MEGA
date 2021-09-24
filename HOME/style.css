@@ -1,0 +1,66 @@
+#exames {
+    background-color: #FFD666;
+    width: auto;
+    height: 700px;
+    color: #2E4A7D;
+    font-family: Nunito;
+    font-weight: bold;
+    padding: 3em;
+}
+
+#exames h1 {
+    font-weight: 800px;
+    size: 38px;
+}
+
+#exames img {
+    width: 10em;
+    height: 10em;
+    border: 2.5px solid #2E4A7D;
+    border-radius: 50%;
+
+}
+
+#exames .section {
+    max-width: 20rem;
+    max-height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#exames .comment-box {
+    max-width: 234px;
+    max-height: 148px;
+    text-align: center;
+}
+
+#exames #section-1 {
+    position: absolute;
+    top: 25%;
+}
+
+#exames #section-2 {
+    position: absolute;
+    left: 40%;
+    top: 20%;
+}
+
+#exames #section-3 {
+    position: absolute;
+    right: 10%;
+    top: 25%;
+}
+
+#exames #section-4 {
+    position: absolute;
+    top: 70%;
+    left: 20%;
+}
+
+#exames #section-5 {
+    position: absolute;
+    top: 70%;
+    right: 25%;
+}
