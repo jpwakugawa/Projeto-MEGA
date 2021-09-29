@@ -3,5 +3,5 @@
 
 Adicionados:
 + Header
-+ Forms de Dúvidas e Contatos
++ Forms de Dúvidas e Área de Contatos
 + Rodapé
