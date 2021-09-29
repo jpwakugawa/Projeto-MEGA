@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <title>Vue test</title>
+</head>
+<body>
+    <div id="app">
+        <div class="nav-bar">
+            <div class="logo-container">
+                <img class="logo" src="img_duck_health/DuckHealth_PNG.png" alt="logo">
+            </div>
+            <div class="nav-wrapper">
+                <nav-button v-for="button in buttons" v-bind:key="button.id" v-bind:label="button.label"></nav-button>
+            </div>
+        </div>
+        <div class="duvidas">
+            <div class="wrapper">
+                <div class="duvidas-form">
+                    <input type="text" class="field" placeholder="Nome"><input type="text" class="field" placeholder="Email">
+                    <textarea type="text" class="field wide-field" placeholder="Como podemos ajudar? Envie sua dúvida"></textarea>
+                    <button class="duvidas-send">Enviar Mensagem</button>
+                </div>
+            </div><div class="wrapper">
+                <div class="contatos">
+                    <h2 class="contatos-title">Contatos</h2>
+                    <template v-for="contact in contacts">
+                        <div class="contatos-wrapper"><img v-bind:src="'img_duck_health/' + contact.icon" class="contatos-icon"><span class="contatos-label">{{ contact.text }}</span></div>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="rodape">
+            <img class="logo-rodape" src="img_duck_health/DuckHealth_PNG.png"><h1 class="title-rodape">Duck Health</h1>
+        </div>
+    </div>
+    <script>
+        Vue.component('nav-button', {
+            props: ['label'],
+            template: '<button class="nav-button">{{ label }}</button>'
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                buttons: [
+                    {id: 1, label: 'Inicio'},
+                    {id: 2, label: 'Sobre'},
+                    {id: 3, label: 'Exames'},
+                    {id: 4, label: 'Contato'}
+                ],
+                contacts: [
+                    {id: 1, text: '(67)0000-0000 ou (67)0000-0000', icon: 'phone.svg'},
+                    {id: 2, text: '@Duck_Health', icon: 'instagram.svg'},
+                    {id: 3, text: 'Duck Health', icon: 'facebook.svg'},
+                    {id: 4, text: 'Duck Health', icon: 'linkedin.svg'}
+                ]
+            }
+        });
+    </script>
+</body>
+</html>

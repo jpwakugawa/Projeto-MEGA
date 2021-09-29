@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #EBF2F5;
+    overflow-x: hidden;
+}
+
+#app {
+    width: 100%;
+}
+
+.logo-container {
+    display: inline-block;
+    margin: 14px 0 14px 130px;
+    background-color: #2E4A7D;
+    height: 90px;
+    width: 90px;
+    border-radius: 8px;
+}
+
+.logo {
+    height: 90px;
+    width: 90px;
+}
+
+.nav-bar {
+    background-color: #15C3D6;
+    height: 118px;
+}
+
+.nav-wrapper {
+    float: right;
+    margin-right: 100px;
+}
+
+.nav-button {
+    display: inline-block;
+    background-color: transparent;
+    font-family: 'Nunito', sans-serif;
+    border: none;
+    font-size: 28px;
+    line-height: 38px;
+    padding: 40px 15px;
+    color: white;
+    font-weight: 700;
+    transition: background-color .3s ease;
+}
+
+.nav-button:hover {
+    background-color: #12AFCB;
+}
+
+.duvidas {
+    height: 350px;
+}
+
+.duvidas-form {
+    box-sizing: border-box;
+    height: 350px;
+    width: 720px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    line-height: 20px;
+    height: 20px;
+    width: 50%;
+    float: left;
+}
+
+
+.field {
+    display: inline-block;
+    height: 52px;
+    width: 340px;
+    margin: 0 0 0 20px;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    line-height: 52px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.field:first-child {
+    margin: 0;
+}
+
+.field::placeholder {
+    color: #909090;
+}
+
+.wide-field {
+    height: 164px;
+    width: 700px;
+    margin: 15px 0 20px;
+    vertical-align: top;
+    line-height: 52px;
+    padding: 0 10px 10px 10px;
+    resize: none;
+}
+
+.duvidas-send {
+    height: 52px;
+    width: 700px;
+    font-weight: 800;
+    font-family: 'Nunito', sans-serif;
+    background-color: #2E4A7D;
+    border-radius: 8px;
+    border: none;
+    font-size: 20px;
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: background-color .3s ease;
+}
+
+.duvidas-send:hover {
+    background-color: #203a69;
+}
+
+.duvidas-send:active {
+    background-color: #182c52;
+}
+
+.contatos {
+    box-sizing: border-box;
+    height: 350px;
+    width: 720px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.contatos-title {
+    line-height: 66px;
+    text-align: center;
+    display: inline-block;
+    font-size: 48px;
+    width: 700px;
+    color: #2E4A7D;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+}
+
+.contatos-wrapper {
+    height: 35px;
+    width: 70%;
+    margin: 10px auto 10px;
+}
+
+.contatos-icon {
+    display: block;
+    float: left;
+    height: 35px;
+    width: 35px;
+    background-color: transparent;
+    color: white;
+    margin: 0 20px 0 0;
+}
+
+.contatos-label {
+    display: block;
+    height: 35px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #2E4A7D;
+    line-height: 35px;
+}
+
+.rodape {
+    box-sizing: border-box;
+    height: 182px;
+    background-color: #12AFCB;
+    border-radius: 0px 80px 0px 0px;
+    padding: 11px 0 11px 0;
+}
+
+.logo-rodape {
+    display: block;
+    height: 160px;
+    width: 160px;
+    float: left;
+    margin: 0 0 0 50px;
+}
+
+.title-rodape {
+    font-size: 40px;
+    font-weight: 800;
+    color: white;
+    line-height: 160px;
+}
