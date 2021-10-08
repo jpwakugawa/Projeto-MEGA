@@ -1,14 +1,14 @@
 <template>
 	<div class="item-doctor">
-					<p id="NomePaciente">Elliot Alderson</p>
-					<p id="CPFPaciente">999.999.999-99</p>
-					<button class ="botao editar">
-					<img id="EditarPaciente" src="../assets/Editar.svg">
-					</button>
-					<button class ="botao excluir">
-					<img id = "Excluir Paciente" src="../assets/Excluir.svg">
-					</button>
-				</div>
+		<p id="NomePaciente">Elliot Alderson</p>
+		<p id="CPFPaciente">999.999.999-99</p>
+		<button class ="botao editar">
+		<img id="EditarPaciente" src="../assets/Editar.svg">
+		</button>
+		<button class ="botao excluir">
+		<img id = "Excluir Paciente" src="../assets/Excluir.svg">
+		</button>
+	</div>
 </template>
 
 <script>
@@ -56,7 +56,7 @@ color: rgba(46, 74, 125, 0.6);
 	width: 536.87px;
 	height: 81px;
 	border-radius: 8px;
-	background: linear-gradient(180deg, #FFD666 0%, rgba(255, 255, 255, 0.5) 100%);
+	background: linear-gradient(180deg, #FFD666 0.01%, rgba(255, 214, 102, 0.5) 100%);
 }
 
 .excluir{

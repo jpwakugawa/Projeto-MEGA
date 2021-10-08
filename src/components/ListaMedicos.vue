@@ -1,25 +1,36 @@
 <template>
 	<div id="ContainerMedicos">
-			<div id="cabecalho">
-				<img id ="icone" src="../assets/doctor.png">
-				<p id = "txt">Lista de Médicos</p>
-					<button class ="botao adicionar">
-						<img id ="icone-adicionar" src="../assets/IconeAdicionar.svg" alt="Icone Adicionar">
-					</button>
-			</div>
-			<div id="linha"></div>
-			<div id="conteudo">
-				<ItemDoctor class="ItemDoctor"></ItemDoctor>
-			</div>
+		<div id="cabecalho">
+			<img id ="icone" src="../assets/doctor.png">
+			<p id = "txt">Lista de Médicos</p>
+				<button class ="botao adicionar" v-on:click="cadastraMedico = true">
+					<img id ="icone-adicionar" src="../assets/IconeAdicionar.svg" alt="Icone Adicionar">
+				</button>
+		</div>
+		<div id="linha"></div>
+		<div id="conteudo">
+			<ItemDoctor class="ItemDoctor"></ItemDoctor>
+		</div>
+		<transition name="modal">
+			<CadastrarMedico v-if="cadastraMedico" v-on:close="cadastraMedico = false"/>
+		</transition>
 	</div>
 </template>
 
 <script>
 import ItemDoctor from '@/components/ItemDoctor.vue'
+import CadastrarMedico from '../components/CadastrarMedico.vue'
+
 export default {
 	name: 'ListaMedicos',
+	data () {
+		return {
+			cadastraMedico: false
+		}
+	},
 	components:{
-		ItemDoctor
+		ItemDoctor,
+		CadastrarMedico
 	}
 }
 </script>
@@ -29,6 +40,14 @@ export default {
 
 .adicionar{
 	margin-top:53px;
+}
+
+.modal-enter-active, .modal-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.modal-enter, .modal-leave-to {
+  opacity: 0;
 }
 
 .ItemDoctor{

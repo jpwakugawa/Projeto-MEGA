@@ -4,7 +4,6 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Login from '../views/Login.vue'
 import LandingPage from '../views/LandingPage.vue'
-import CadastrarMedico from '../views/CadastrarMedico.vue'
 import TelaAdministrativa from '../views/TelaAdministrativa.vue'
 
 Vue.use(VueRouter)
@@ -32,11 +31,6 @@ const routes = [
     path: '/landing',
     name: 'Landing',
     component: LandingPage
-  },
-  {
-    path: '/cadastrar-medico',
-    name: 'Cadastrar Médico',
-    component: CadastrarMedico
   },
   {
     path: '/administrativa',
