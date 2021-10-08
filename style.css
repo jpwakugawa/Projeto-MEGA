@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+/* breno7k */
+
+.banner-title {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 64px;
+    margin-bottom: 44px;
+    line-height: 87px;
+    text-align: center;
+    color: #FFD666;
+}
+
+.banner {
+    position: relative;
+    overflow: hidden;
+    height: 672px;
+    width: 100%;
+    background: #15C3D6;
+    box-sizing: border-box;
+    border-radius: 0px 0px 0px 150px;
+}
+
+.banner-left {
+    width: 40%;
+    padding: 92px 0 0 150px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.banner-text {
+    font-family: 'Nunito', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    height: 247px;
+    width: 370px;
+    margin: 0 auto 44px;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: justify;
+    color: white;
+}
+
+.banner-button {
+    display: block;
+    box-sizing: border-box;
+    height: 70px;
+    width: 328px;
+    border-radius: 20px;
+    background: #2E4A7D;
+    border-radius: 20px;
+    padding: 15px 25px 15px 38px;
+    border: none;
+    white-space: nowrap;
+    cursor: pointer;
+    margin: 0 auto;;
+}
+
+.laudos-button {
+    display: block;
+    height: 40px;
+    width: 38px;
+    float: left;
+}
+
+.b-text {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 40px;
+    color: #FFFFFF;
+    background-color: transparent;
+}
+
+.circle-vector {
+    border-radius: 0px;
+    position: absolute;
+    right: -12.69%;
+    bottom: 358px;
+    border: none;
+}
+
+.bg-banner {
+    /*62%*/
+    position: absolute;
+    right: -60px;
+    top: -30px;
+    float: right;
+    width: 943px;
+    height: 740px;
+    background: url('img_duck_health/bg-banner.svg');
+}
+
+/* joaovareiro */
+
+.AboutUs{
+	overflow: hidden;
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+#Circulo{
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	top: -168px;
+	left: 433px;
+	z-index: 0;
+	transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.about-title{
+	width: 507px;
+	height: 76px;
+    display: block;
+	z-index:1;
+	font-family: 'Nunito' ,sans-serif;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 48px;
+	line-height: 65px;
+	text-align: center;
+    color: #2E4A7D;
+}
+
+#TextoSobreNos {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+	height: 441px;
+    width: 507px;
+    padding: 166px 81px 95px 0;
+    padding: 0;
+    margin: 128px 0 0 0;
+	font-family: 'Nunito' ,sans-serif;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 20px;
+	line-height: 27px;
+	align-items: center;
+	text-align: justify;
+	color: rgba(46, 74, 125, 0.8);
+    float: left;
+}
+
+.about-text {
+    display: block;
+    width: 507px;
+    margin: 0 auto;
+}
+
+.imagem-doutor-wrapper {
+    position: relative;
+    z-index: 1;
+	height: 500px;
+	width: 600px;
+    padding: 82px 170px 82px 83px;
+	z-index: 3;
+	border-radius: 8px;
+    float: left;
+}
+
+.imagem-doutor {
+    height: 500px;
+}
+
+#RetanguloCinza{
+	position: relative;
+	height: 664px;
+	width: 1440px;
+	background: #EBF2F5;
+	border-radius: 0px;
+}
+
+/* jpwakugawa */
+
+#exames {
+    position: relative;
+    background-color: #FFD666;
+    width: auto;
+    height: 700px;
+    color: #2E4A7D;
+    font-family: Nunito;
+    font-weight: bold;
+    padding: 30px 57px;
+    border-radius: 0px 222px 0px 220px;
+}
+
+#exames h1 {
+    font-weight: 800;
+    size: 38px;
+    height: 57px;
+    width: 209px;
+    text-align: center;
+}
+
+#exames img {
+    width: 10em;
+    height: 10em;
+    border: 2.5px solid #2E4A7D;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#exames .section {
+    max-width: 20rem;
+    max-height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#exames .comment-box {
+    max-width: 234px;
+    max-height: 148px;
+    text-align: center;
+    font-weight: 800;
+}
+
+#exames #section-1 {
+    position: absolute;
+    top: 25%;
+}
+
+#exames #section-2 {
+    position: absolute;
+    left: 40%;
+    top: 20%;
+}
+
+#exames #section-3 {
+    position: absolute;
+    right: 10%;
+    top: 25%;
+}
+
+#exames #section-4 {
+    position: absolute;
+    top: 60%;
+    left: 20%;
+}
+
+#exames #section-5 {
+    position: absolute;
+    top: 60%;
+    right: 25%;
+}
+
+/* marcoshasm */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #EBF2F5;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+#app {
+    width: 100%;
+}
+
+.logo-container {
+    display: inline-block;
+    margin: 14px 0 14px 130px;
+    background-color: #2E4A7D;
+    height: 90px;
+    width: 90px;
+    border-radius: 8px;
+}
+
+.logo {
+    height: 90px;
+    width: 90px;
+}
+
+.nav-bar {
+    background-color: #15C3D6;
+    height: 118px;
+}
+
+.nav-wrapper {
+    float: right;
+    margin-right: 100px;
+}
+
+.nav-button {
+    display: inline-block;
+    background-color: transparent;
+    font-family: 'Nunito', sans-serif;
+    border: none;
+    font-size: 28px;
+    line-height: 38px;
+    padding: 40px 15px;
+    color: white;
+    font-weight: 700;
+    transition: background-color .3s ease;
+}
+
+.nav-button:hover {
+    background-color: #12AFCB;
+}
+
+.duvidas {
+    height: 350px;
+}
+
+.duvidas-form {
+    box-sizing: border-box;
+    height: 350px;
+    width: 720px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    line-height: 20px;
+    height: 20px;
+    width: 50%;
+    float: left;
+}
+
+.field {
+    display: inline-block;
+    height: 52px;
+    width: 340px;
+    margin: 0 0 0 20px;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    line-height: 52px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.field:first-child {
+    margin: 0;
+}
+
+.field::placeholder {
+    color: #909090;
+}
+
+.wide-field {
+    height: 164px;
+    width: 700px;
+    margin: 15px 0 20px;
+    vertical-align: top;
+    line-height: 52px;
+    padding: 0 10px 10px 10px;
+    resize: none;
+}
+
+.duvidas-send {
+    height: 52px;
+    width: 700px;
+    font-weight: 800;
+    font-family: 'Nunito', sans-serif;
+    background-color: #2E4A7D;
+    border-radius: 8px;
+    border: none;
+    font-size: 20px;
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: background-color .3s ease;
+}
+
+.duvidas-send:hover {
+    background-color: #203a69;
+}
+
+.duvidas-send:active {
+    background-color: #182c52;
+}
+
+.contatos {
+    box-sizing: border-box;
+    height: 350px;
+    width: 720px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.contatos-title {
+    line-height: 66px;
+    text-align: center;
+    display: inline-block;
+    font-size: 48px;
+    width: 700px;
+    color: #2E4A7D;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+}
+
+.contatos-wrapper {
+    height: 35px;
+    width: 70%;
+    margin: 10px auto 10px;
+}
+
+.contatos-icon {
+    display: block;
+    float: left;
+    height: 35px;
+    width: 35px;
+    background-color: transparent;
+    color: white;
+    margin: 0 20px 0 0;
+}
+
+.contatos-label {
+    display: block;
+    height: 35px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #2E4A7D;
+    line-height: 35px;
+}
+
+.rodape {
+    box-sizing: border-box;
+    height: 182px;
+    background-color: #12AFCB;
+    border-radius: 0px 80px 0px 0px;
+    padding: 11px 0 11px 0;
+}
+
+.logo-rodape {
+    display: block;
+    height: 160px;
+    width: 160px;
+    float: left;
+    margin: 0 0 0 50px;
+}
+
+.title-rodape {
+    font-size: 40px;
+    font-weight: 800;
+    color: white;
+    line-height: 160px;
+}
