@@ -1,5 +1,5 @@
 <template>
-    <button class="nav-button">{{ label }}</button>
+    <a class="nav-button">{{ label }}</a>
 </template>
 
 <script>

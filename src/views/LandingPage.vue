@@ -5,12 +5,12 @@
                 <img class="logo" src="../assets/img_duck_health/DuckHealth_PNG.png" alt="logo">
             </div>
             <div class="nav-wrapper">
-                <NavButton v-for="button in buttons" v-bind:key="button.id" v-bind:label="button.label"></NavButton>
+                <NavButton v-for="button in buttons" v-bind:key="button.id" v-bind:label="button.label" v-bind:href="button.tag"></NavButton>
             </div>
         </div>
 
 <!-- INICIO breno7k -->
-        <section class="banner">
+        <section id="inicio" class="banner">
             <div class="banner-left">
                 <h1 class="banner-title">Duck Health</h1>
             
@@ -48,7 +48,7 @@
 <!-- FIM breno7k -->
 
 <!-- INICIO joaovareiro-->
-        <div class = "AboutUs">
+        <div id="sobre" class = "AboutUs">
             <div class="imagem-doutor-wrapper">
                 <img class="imagem-doutor" src="../assets/img_duck_health/doctor.jpg" alt="doutor fazendo exame">
             </div>
@@ -129,7 +129,7 @@
 
 <!-- FIM breno7k -->
 
-        <div class="duvidas">
+        <div id="contato" class="duvidas">
             <div class="wrapper">
                 <div class="duvidas-form">
                     <input type="text" class="field" placeholder="Nome"><input type="text" class="field" placeholder="Email">
@@ -166,10 +166,10 @@ export default {
     data () {
         return {
             buttons: [
-                {id: 1, label: 'Inicio'},
-                {id: 2, label: 'Sobre'},
-                {id: 3, label: 'Exames'},
-                {id: 4, label: 'Contato'}
+                {id: 1, label: 'Inicio', tag: '#inicio'},
+                {id: 2, label: 'Sobre', tag: '#sobre'},
+                {id: 3, label: 'Exames', tag: '#exames'},
+                {id: 4, label: 'Contato', tag: '#contato'}
             ],
             contacts: [
                 {id: 1, text: '(67)0000-0000 ou (67)0000-0000', icon: phone},
@@ -564,6 +564,7 @@ export default {
         padding: 40px 15px;
         color: white;
         font-weight: 700;
+        text-decoration: none;
         transition: background-color .3s ease;
     }
 
