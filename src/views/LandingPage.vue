@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div>
         <div class="nav-bar">
             <div class="logo-container">
                 <img class="logo" src="../assets/img_duck_health/DuckHealth_PNG.png" alt="logo">
@@ -107,6 +107,27 @@
             </div>
         </div>
 <!-- FIM jpwakugawa -->
+
+<!-- INICIO breno7k-->
+        <div class="address">
+            <div class="address-text">
+                <h2 class="address-title">Endereço</h2>
+                <div class="address-wrapper"><img src="..\assets\predio.svg" class="address-icon"><span class="address-label">Rua dos Doidões, Bairro Muito Doido, N° 127</span></div>
+                <div class="address-wrapper"><img src="..\assets\AC.svg" class="address-icon"><span class="address-label">Ambiente climatizado, para o seu conforto ao atende-lo!</span></div>
+                <div class="address-wrapper"><img src="..\assets\bola.svg" class="address-icon"><span class="address-label">Sala com brinquedos e passa-tempo para as crianças!</span></div>
+            </div>
+            <figure class="map"></figure>
+            <figure class="circle-address">
+                <svg width="502" height="502" viewBox="0 0 502 502" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M396.114 251.492C396.114 331.32 331.144 396.034 251 396.034C170.856 396.034 105.887 331.32 105.887 251.492V250.508C105.887 170.68 170.856 105.966 251 105.966C331.144 105.966 396.114 170.68 396.114 250.508V251.492Z" fill="#BCF1F8"/>
+                <path opacity="0.5" d="M501 251.983C501 389.511 389.071 501 251 501C112.929 501 1 389.511 1 251.983V250.017C1 112.489 112.929 1 251 1C389.071 1 501 112.489 501 250.017V251.983Z" stroke="#878D92"/>
+                <path d="M417.091 251.492C417.091 342.86 342.729 416.929 251 416.929C159.271 416.929 84.9092 342.86 84.9092 251.492V250.508C84.9092 159.14 159.271 85.0708 251 85.0708C342.729 85.0708 417.091 159.14 417.091 250.508V251.492Z" stroke="#878D92"/>
+                </svg>
+                <p class="address-p"></p>
+            </figure>
+        </div>
+
+<!-- FIM breno7k -->
 
         <div class="duvidas">
             <div class="wrapper">
@@ -266,6 +287,79 @@ export default {
         width: 943px;
         height: 740px;
     }
+
+    .address{
+        height: 350px;
+        width: 100%;
+        position: relative;
+        border-radius: 0px;
+        bottom: 0%;
+        background: #EBF2F5;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 20px 0 0 102px;
+    }
+
+    .address-icon {
+        display: block;
+        float: left;
+        height: 35px;
+        width: 35px;
+        background-color: transparent;
+        color: white;
+        margin: 0 20px 0 0;
+    }
+
+    .address-text {
+        width: 435px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .address-title {
+        font-family: 'Nunito', sans-serif;
+        font-style: normal;
+        margin: 0 0 25px 0;
+        font-weight: 800;
+        font-size: 48px;
+        line-height: 65px;
+        color: #2E4A7D;
+    }
+
+    .address-label {
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 25px;
+        color: rgba(46, 74, 125, 0.8);
+    }
+
+    .address-wrapper {
+        height: 35px;
+        margin: 10px auto 25px;
+    }
+
+    .map{
+        height: 237px;
+        position: absolute;
+        top: 41px;
+        right: 68px;
+        width: 630px;
+        background: url('../assets/map.svg');
+        background-repeat: no-repeat;
+        border-radius: 8px;
+    }
+
+    .circle-address{
+            position: absolute;
+            height: 500px;
+            width: 500px;
+            top: -230px;
+            left: -209px;
+            border: none;
+            transform: matrix(1, 0, 0, -1, 0, 0);
+        }
 
     /* joaovareiro */
 
