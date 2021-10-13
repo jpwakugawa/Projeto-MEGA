@@ -5,6 +5,7 @@ import About from '../views/About.vue'
 import Login from '../views/Login.vue'
 import LandingPage from '../views/LandingPage.vue'
 import TelaAdministrativa from '../views/TelaAdministrativa.vue'
+import ListaLaudos from '../views/ListaLaudos.vue'
 
 Vue.use(VueRouter)
 
@@ -36,7 +37,12 @@ const routes = [
     path: '/administrativa',
     name: 'Tela Administrativa',
     component: TelaAdministrativa
-  }
+  },
+	{
+    path: '/ListaLaudos',
+    name: 'Lista de Laudos',
+    component: ListaLaudos
+	}
 ]
 
 const router = new VueRouter({
