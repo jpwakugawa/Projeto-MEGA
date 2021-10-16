@@ -1,0 +1,98 @@
+<template>
+    <div class="paciente">
+        <img src="../assets/cubos.png" alt="imagem de cubos">
+        <figure class="paciente-img"></figure>
+        <p class="paciente-nome">{{nome}}</p>
+        <p class="cpf">{{cpf}}</p>
+    </div>        
+</template>
+
+<script>
+export default {
+    name: 'paciente',
+    data() {
+        return {
+            nome: "Elliot Alderson",
+            cpf: "999.999.999-99"
+        }
+    },
+}
+</script>
+
+<style scoped>
+
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+    /*Card de paciente*/
+    .paciente{
+        position: relative;
+        height: 300px;
+        width: 300px;
+        margin: 0px 107px 55px 0px;
+        border-radius: 20px;
+        background: #FFFFFF;
+        border-radius: 20px;
+        
+    }
+    /*imagem amarela no card*/
+    .cubos{
+        position: absolute;
+        bottom: 188px;
+        right: 0%;
+        left: 0%;
+        border: 2px solid #FFFFFF;
+        
+        border-radius: 20px 20px 0px 0px;
+    }
+    /*imagem do paciente*/
+    .paciente-img{
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        left: 100px;
+        right: 100px;
+        bottom: 114px;
+        margin:0%;
+        border-radius: 50px;
+        /*background: url("../assets/patient.png");*/
+        border: 4px solid #FFFFFF;
+        box-sizing: border-box;
+    }
+    /*nome do paciente*/
+    .paciente-nome{
+        position: absolute;
+        width: 150px;
+        left: 75px;
+        margin: 0%;
+        bottom: 25%;
+
+        font-family: 'Nunito', sans-serif;;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 27px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: #2E4A7D;
+    }
+    .cpf{
+        position: absolute;
+        left: 22.33%;
+        right: 22.69%;
+        top: 78.14%;
+        bottom: 13.89%;
+        margin: 0%;
+
+        font-family: 'Nunito', sans-serif;;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 20px;
+        align-items: center;
+        text-align: center;
+
+        color: rgba(46, 74, 125, 0.5);
+    }
+</style>
