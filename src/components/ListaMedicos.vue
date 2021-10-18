@@ -1,5 +1,5 @@
 <template>
-	<div id="ContainerMedicos">
+	<div class="container-medicos">
 		<div id="cabecalho">
 			<img id ="icone" src="../assets/doctor.png">
 			<p id = "txt">Lista de Médicos</p>
@@ -7,12 +7,20 @@
 					<img id ="icone-adicionar" src="../assets/IconeAdicionar.svg" alt="Icone Adicionar">
 				</button>
 		</div>
-		<div id="linha"></div>
+		<div class="linha"></div>
 		<div id="conteudo">
-			<ItemDoctor class="ItemDoctor"></ItemDoctor>
+			<transition-group name="list">
+				<ItemDoctor v-for="medico in medicos" v-bind:key="medico.id" v-bind:id="medico.id" v-bind:nome="medico.nome" v-bind:cpf="medico.cpf" v-bind:especialidade="medico.especialidade" v-on:edit-doctor="editarMedico($event)" v-on:delete="deletar($event)"/>
+			</transition-group>
 		</div>
 		<transition name="modal">
-			<CadastrarMedico v-if="cadastraMedico" v-on:close="cadastraMedico = false"/>
+			<CadastrarMedico v-if="cadastraMedico" v-on:close="cadastraMedico = false" v-on:atualiza="listaMedicos()"/>
+		</transition>
+		<transition name="modal">
+			<EditarMedico v-if="editaMedico" v-bind:id="medicoEditado.id" v-bind:nome="medicoEditado.nome" v-bind:cpf="medicoEditado.cpf" v-bind:especialidade="medicoEditado.especialidade" v-on:close="editaMedico = false" v-on:atualiza="listaMedicos()"/>
+		</transition>
+		<transition name="modal">
+			<DeletePrompt v-if="deleteP" v-bind:id="deleteId" v-on:close="deleteP = false" v-on:deleteUser="deletarUser($event)"/>
 		</transition>
 	</div>
 </template>
@@ -20,105 +28,77 @@
 <script>
 import ItemDoctor from '@/components/ItemDoctor.vue'
 import CadastrarMedico from '../components/CadastrarMedico.vue'
+import EditarMedico from '../components/EditarMedico.vue'
+import DeletePrompt from '../components/DeletePrompt.vue'
 
 export default {
 	name: 'ListaMedicos',
+	created: function () {
+		this.listaMedicos();
+	},
 	data () {
 		return {
-			cadastraMedico: false
+			cadastraMedico: false,
+			editaMedico: false,
+			deleteP: false,
+			deleteId: 0,
+			medicos: [],
+			medicoEditado: {}
+		}
+	},
+	methods: {
+		editarMedico (medico) {
+			this.editaMedico = true;
+			this.medicoEditado = medico;
+		},
+		deletar (id) {
+			this.deleteId = id;
+			this.deleteP = true;
+		},
+		async deletarUser (id) {
+			try {
+				const user = {
+					userid: id
+				}
+				const {data} = await this.$http.post('http://localhost:3000/delete', user);
+				console.log(data);
+			} catch (error) {
+				console.error(error);
+			} finally {
+				//deletou com sucesso
+				this.listaMedicos();
+			}
+		},
+		async listaMedicos () {
+			try {
+				const {data} = await this.$http.get('http://localhost:3000/medicos');
+				this.medicos = data;
+			} catch (error) {
+				console.error(error);
+			} finally {
+				//console.log(this.medicos);
+			}
 		}
 	},
 	components:{
 		ItemDoctor,
-		CadastrarMedico
+		CadastrarMedico,
+		EditarMedico,
+		DeletePrompt
 	}
 }
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
-
-.adicionar{
-	margin-top:53px;
-}
-
-.modal-enter-active, .modal-leave-active {
-    transition: opacity 0.3s ease;
-}
-
-.modal-enter, .modal-leave-to {
-  opacity: 0;
-}
-
-.ItemDoctor{
-	position:absolute;
-}
-
-.botao{
-width:45px;
-height:45px;
-margin-top:19px;
-background: #2E4A7D;
-border-radius: 20px;
-border:none;
-}
-.botao:active{
-	background: #243d6b;
-}
-
-#conteudo{
-	width: 602px;
-	height: 570px;
-}
-
-#linha{
-	width: 536.87px;
-	height: 1px;
-	background-color: #2E4A7D;
-	margin-top: 0px;
-	margin-right: 31.07px;
-	margin-left:34.95px;
-}
-
-#txt{
-	margin-top: 48px;
-	margin-right:63.34px;
-	width: 281.53px;
-	height: 63.01px;
-	font-family: Nunito;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 32px;
-}
-#icone{
-	margin-top: 25.28px;
-	margin-left: 44.73px;
-	margin-right: 20.23px;
-	border-radius: 50%;
-	border:solid;
-	border-color: #2E4A7D;
-	width: 97.08px;
-	height: 100px;
-}
-#ContainerMedicos{
-	align-items: flex-start;
-	justify-content: flex-start;
-	display: flex;
-	flex-direction: column;
-	Width :602.89px;
-	Height:720px;
-	margin-top: 0;
-	margin-right: 687.11px;
-	margin-bottom: 76px;
-	margin-left: 776px;
-	background-color: rgb(255, 255, 255);
-	border-radius: 8px;
-}
-#cabecalho{
-	display: flex;
-	Width :602.89px;
-	Height:148px;
-}
-
-
+	.container-medicos {
+		float: left;
+		width :602.89px;
+		height:720px;
+		margin-top: 0;
+		margin-right: 23px;
+		margin-bottom: 76px;
+		margin-left: 38px;
+		background-color: rgb(255, 255, 255);
+		border-radius: 8px;
+	}
 </style>

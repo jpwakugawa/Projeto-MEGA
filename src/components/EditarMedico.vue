@@ -4,44 +4,44 @@
                 <figure class="main-img"> </figure>
 
                 <div>
-                    <h1 class="title-med">Cadastrar<span class="pink"> Médico</span></h1>
+                    <h1 class="title-med">Editar<span class="pink"> Médico</span></h1>
 
                     <div class="cadastro-input" v-bind:class="{red: nomeErr}">
                         <figure class="input-icon">
                                 <img src="..\assets\name-i.svg" alt="ícone">
                         </figure>
-                        <input v-model="nome" type="text"  class="input-field" placeholder="Nome Completo">
+                        <input v-model="nomeM" type="text"  class="input-field" placeholder="Nome Completo">
                     </div>
                     
                     <div class="cadastro-input" v-bind:class="{red: especialidadeErr}">
                         <figure class="input-icon">
                             <img src="..\assets\stethoscope.svg" alt="">
                         </figure>
-                        <input v-model="especialidade" type="text"  class="input-field" placeholder="Especialidade">
+                        <input v-model="especialidadeM" type="text" class="input-field" placeholder="Especialidade">
                     </div>
 
-                    <div class="cadastro-input" v-bind:class="{red: nomeErr}">
+                    <div class="cadastro-input" v-bind:class="{red: cpfErr}">
                         <figure class="input-icon">
                             <img src="..\assets\cpf-i.svg" alt="">
                         </figure>
-                        <input v-model="cpf" type="text" class="input-field" placeholder="CPF">
+                        <input v-model="cpfM" type="text" class="input-field" placeholder="CPF">
                     </div>
 
                     <div class="cadastro-input" v-bind:class="{red: senhaErr}">
                         <figure class="input-icon">
                             <img src="..\assets\key-i.svg" alt="ícone de uma chave">
                         </figure>
-                        <input v-model="senha" type="password" class="input-field" placeholder="Senha">
+                        <input v-model="senha" type="password" class="input-field" placeholder="Nova senha">
                     </div>
 
                     <div class="cadastro-input" v-bind:class="{red: senhaErr}">
                         <figure class="input-icon">
                             <img src="..\assets\key-i.svg" alt="ícone de uma chave">
                         </figure>
-                        <input v-model="senhaR" type="password" class="input-field" placeholder="Confirmar senha">
+                        <input v-model="senhaR" type="password" class="input-field" placeholder="Confirmar nova senha">
                     </div>
 
-                    <input v-on:click="registrar()" type="button" name="enviar-cadastro"  class="cadastro-button" value="Cadastrar">
+                    <input v-on:click="editar()" type="button" name="enviar-cadastro"  class="cadastro-button" value="Salvar">
                 </div>
             </div>
         </div>
@@ -49,41 +49,47 @@
 
 <script>
 export default {
-    name: "addmedico",
+    name: "editmedico",
 	data () {
 		return {
-            nome: '',
-            especialidade: '',
-            cpf: '',
+            nomeM: this.nome,
+            cpfM: this.cpf,
+            especialidadeM: this.especialidade,
             senha: '',
             senhaR: '',
             nomeErr: false,
             especialidadeErr: false,
             cpfErr: false,
-            senhaErr: false,
-            response: {}
+            senhaErr: false
 		}
 	},
+    props: {
+        id: Number,
+        nome: String,
+        cpf: String,
+        especialidade: String
+    },
     methods: {
-        async registrar () {
-            this.nome.length < 6 ? this.nomeErr = true : this.nomeErr = false
-            this.cpf.length < 11 ? this.cpfErr = true : this.cpfErr = false
+        async editar () {
+            this.nomeM.length < 6 ? this.nomeErr = true : this.nomeErr = false
+            this.cpfM.length < 11 ? this.cpfErr = true : this.cpfErr = false
             if (this.senha != this.senhaR || this.senha.length < 1)
                 this.senhaErr = true;
             else
                 this.senhaErr = false;
-            this.especialidade.length < 1 ? this.especialidadeErr = true : this.especialidadeErr = false
+            this.especialidadeM.length < 1 ? this.especialidadeErr = true : this.especialidadeErr = false
             if (this.nomeErr || this.cpfErr || this.senhaErr || this.especialidadeErr) {
                 console.log("falha na entrada");
             } else {
                 try {
                     const medico = {
-                        nome: this.nome,
-                        cpf: this.cpf,
+                        id: this.id,
+                        nome: this.nomeM,
+                        cpf: this.cpfM,
                         senha: this.senha,
-                        especialidade: this.especialidade
+                        especialidade: this.especialidadeM
                     }
-                    const {data} = await this.$http.post('http://localhost:3000/registra-medico', medico);
+                    const {data} = await this.$http.post('http://localhost:3000/edita-medico', medico);
                     this.response = data;
                 } catch (error) {
                     console.log(error);
@@ -104,6 +110,10 @@ export default {
 .pink {
     white-space: pre;
     color: #ff738a;
+}
+
+.red {
+    border-color: red!important;;
 }
 
 .main {
@@ -186,11 +196,6 @@ export default {
     border: 1px solid #2E4A7D;
     box-sizing: border-box;
 }
-
-.red {
-    border-color: red;
-}
-
 /*ícone dentro das caixas de input*/
 .input-icon{
     display: inline-block;

@@ -14,13 +14,47 @@
         <div class="login">
             <h1 class="login-title">Bem-vindo</h1>
             <h2 class="login-subtitle">Acesse seus <span class="yellow">laudos</span> agora!</h2>
-            <input class="login-input" type="text" placeholder="Escreva aqui seu CPF">
-            <input class="login-input" type="password" placeholder="Escreva aqui a senha">
-            <button class="login-button">Entrar</button>
+            <input v-model="cpf" class="login-input" type="text" placeholder="Escreva aqui seu CPF">
+            <input v-model="senha" class="login-input" type="password" placeholder="Escreva aqui a senha">
+            <button v-on:click="login()" class="login-button">Entrar</button>
             <img class="lock-icon" src="../assets/img_duck_health/lock.svg" alt="lock"><span class="forgot-psw">Esqueceu sua senha?</span> <span class="forgot-link">Clique aqui!</span>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    data () {
+        return {
+            cpf: '',
+            senha: '',
+            response: {}
+        }
+    },
+    methods: {
+        async login () {
+            //autenticar login com o backend
+            try {
+                const user = {
+                    cpf: this.cpf,
+                    senha: this.senha
+                }
+                const {data} = await this.$http.post('http://localhost:3000/login', user);
+                this.response = data;
+            } catch (error) {
+                console.log(error);
+            } finally {
+                //login feito com sucesso
+                console.log(this.response);
+                if (this.response[0]) {
+                    console.log("sucesso");
+                    this.$router.push('/administrativa');
+                }
+            }
+        }
+    }
+}
+</script>
 
 <style>
 

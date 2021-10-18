@@ -18,14 +18,14 @@ export default {
 <style scoped>
 .tela-admin {
 	float: left;
-	height: 860px;
+	height: 100vh;
 	width: 112px;
 	overflow: hidden;
 }
 
 .BarraLateral{
 	max-width: 112px;
-	height: 860px;
+	height: 100vh;
 	background-color: #15C3D6;
 	background-size: 112px 860px;
 	border-top-right-radius: 10px;

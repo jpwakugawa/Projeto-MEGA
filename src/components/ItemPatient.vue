@@ -3,31 +3,28 @@
 		<div class="left-bar"/>
 		<p class="nome-paciente">{{nome}}</p>
 		<p class="CPFPaciente">{{cpf | cpf}}</p>
-		<button class ="botao editar" v-on:click="$emit('edit-doctor', medico)">
+		<button class ="botao editar" v-on:click="$emit('edit-patient', paciente)">
 		<img src="../assets/Editar.svg">
 		</button>
-		<button class ="botao excluir" v-on:click="$emit('delete', medico.id)">
+		<button class ="botao excluir" v-on:click="$emit('delete', paciente.id)">
 		<img src="../assets/Excluir.svg">
 		</button>
 	</div>
 </template>
 
 <script>
-
 export default {
 	props: {
 		nome: String,
 		cpf: String,
-		id: Number,
-		especialidade: String
+		id: Number
 	},
 	computed: {
-		medico: function () {
+		paciente: function () {
 			return {
 				id: this.id,
 				nome: this.nome,
-				cpf: this.cpf,
-				especialidade: this.especialidade
+				cpf: this.cpf
 			}
 		}
 	},
@@ -70,7 +67,7 @@ export default {
 	font-weight: bold;
 	font-size: 16px;
 	line-height: 22px;
-	top: 41px;
+	top: 42px;
 	left: 32px;
 	color: rgba(46, 74, 125, 0.6);
 }
@@ -101,12 +98,6 @@ export default {
 	right: 105px;
 	background: #2E4A7D;
 	border-radius: 20px;
-}
-
-#EditarPaciente {
-	margin-top:10px;
-	margin-left:3.95px;
-	margin-bottom:7px;
 }
 
 </style>

@@ -4,7 +4,7 @@
                 <figure class="main-img"> </figure>
 
                 <div>
-                    <h1 class="title-med">Cadastrar<span class="pink"> Médico</span></h1>
+                    <h1 class="title-med">Cadastrar Novo<br><span class="pink">Paciente</span></h1>
 
                     <div class="cadastro-input" v-bind:class="{red: nomeErr}">
                         <figure class="input-icon">
@@ -12,15 +12,8 @@
                         </figure>
                         <input v-model="nome" type="text"  class="input-field" placeholder="Nome Completo">
                     </div>
-                    
-                    <div class="cadastro-input" v-bind:class="{red: especialidadeErr}">
-                        <figure class="input-icon">
-                            <img src="..\assets\stethoscope.svg" alt="">
-                        </figure>
-                        <input v-model="especialidade" type="text"  class="input-field" placeholder="Especialidade">
-                    </div>
 
-                    <div class="cadastro-input" v-bind:class="{red: nomeErr}">
+                    <div class="cadastro-input" v-bind:class="{red: cpfErr}">
                         <figure class="input-icon">
                             <img src="..\assets\cpf-i.svg" alt="">
                         </figure>
@@ -41,7 +34,7 @@
                         <input v-model="senhaR" type="password" class="input-field" placeholder="Confirmar senha">
                     </div>
 
-                    <input v-on:click="registrar()" type="button" name="enviar-cadastro"  class="cadastro-button" value="Cadastrar">
+                    <input v-on:click="registrar()" type="button" name="enviar-cadastro" class="cadastro-button" value="Cadastrar">
                 </div>
             </div>
         </div>
@@ -49,16 +42,14 @@
 
 <script>
 export default {
-    name: "addmedico",
+    name: "addpaciente",
 	data () {
 		return {
             nome: '',
-            especialidade: '',
             cpf: '',
             senha: '',
             senhaR: '',
             nomeErr: false,
-            especialidadeErr: false,
             cpfErr: false,
             senhaErr: false,
             response: {}
@@ -72,18 +63,16 @@ export default {
                 this.senhaErr = true;
             else
                 this.senhaErr = false;
-            this.especialidade.length < 1 ? this.especialidadeErr = true : this.especialidadeErr = false
-            if (this.nomeErr || this.cpfErr || this.senhaErr || this.especialidadeErr) {
+            if (this.nomeErr || this.cpfErr || this.senhaErr) {
                 console.log("falha na entrada");
             } else {
                 try {
-                    const medico = {
+                    const paciente = {
                         nome: this.nome,
                         cpf: this.cpf,
-                        senha: this.senha,
-                        especialidade: this.especialidade
+                        senha: this.senha
                     }
-                    const {data} = await this.$http.post('http://localhost:3000/registra-medico', medico);
+                    const {data} = await this.$http.post('http://localhost:3000/registra-paciente', paciente);
                     this.response = data;
                 } catch (error) {
                     console.log(error);
@@ -106,6 +95,10 @@ export default {
     color: #ff738a;
 }
 
+.red {
+    border-color: red!important;
+}
+
 .main {
     display: flex;
     align-items:flex-start;
@@ -121,6 +114,7 @@ export default {
 .modal {
     background-color: rgba(0, 0, 0, 0.3);
     position: absolute;
+    z-index: 2;
     top: 0;
     left: 0;
     height: 100vh;
@@ -131,26 +125,23 @@ export default {
 .main-img{
     overflow: hidden;
     height: 500px;
-    width: 420px;
+    width: 388px;
     margin: 0%;
     border-radius: 8px;
 
-    background: url(../assets/doctor-register.png);
+    background: url(../assets/doctor-patient.png);
 
     
 }
 /*título da página*/
 .title-med{
-    margin: auto auto auto 40.78px;
-    Width : 319,99px;
-    Height: 79px;
-
+    margin: 30px auto auto 40.78px;
+    Width : 320px;
     font-family: Nunito;
     font-style: normal;
     font-weight: 800;
     font-size: 36px;
     line-height: 49px;
-    display: flex;
     align-items: center;
 
     color: #2E4A7D;
@@ -186,11 +177,6 @@ export default {
     border: 1px solid #2E4A7D;
     box-sizing: border-box;
 }
-
-.red {
-    border-color: red;
-}
-
 /*ícone dentro das caixas de input*/
 .input-icon{
     display: inline-block;
