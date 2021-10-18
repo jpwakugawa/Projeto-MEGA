@@ -64,3 +64,72 @@
     top: 70%;
     right: 25%;
 }
+
+#endereço {
+    width: 1440px;
+    height: 350px;
+    color: #2E4A7D;
+    font-family: Nunito;
+    font-weight: bold;
+}
+
+#endereço img {
+    object-fit: 100px 50px;
+}
+
+#adc-alt-paciente {
+    margin-top: 300px;
+    width: 800px;
+    height: 500px; 
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+#adc-alt-paciente #section-cadastro {
+    float: right;
+    align-items: center;
+}
+
+#adc-alt-paciente img {
+    width: 50%;
+    height: 100%;
+}
+
+#adc-alt-paciente input {
+    background: #F5F5F5;
+    border: 1px solid #2E4A7D;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+#adc-alt-paciente button {
+    background: #2E4A7D;
+    border-radius: 16px;
+    width: 300px;
+    height: 51px;
+    top: 377px;
+    left: 440px;
+    border-radius: 16px;
+    font-weight: bold;
+    font-size: 22px;
+    color: white;
+}
+
+#adc-alt-paciente .blue {
+    color: #2E4A7D;
+}
+
+#adc-alt-paciente .red {
+    color: #FF738A;
+}
+
+#lista_upload_laudo {
+    background-color: #FFD666;
+    width: auto;
+    height: 700px;
+    color: #2E4A7D;
+    font-family: Nunito;
+    font-weight: bold;
+    padding: 3em;  
+}
