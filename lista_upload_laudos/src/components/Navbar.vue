@@ -29,6 +29,8 @@ export default {
     #navbar{
         display: flex;
         position: absolute;
+        left: 214px;
+        top: 34px;
         padding: 0%;
         margin: 0%;
         width: 1119px;

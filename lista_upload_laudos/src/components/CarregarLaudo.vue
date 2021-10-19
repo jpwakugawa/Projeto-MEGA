@@ -37,40 +37,12 @@ export default {
         flex-direction: column;
         align-items: center;
         position: absolute;
-        top: 27%;
-        left: 50%;
+        background: white;
+        top: 25%;
+        right: 7%;
         width: 520px;
         height: 520px;
         border-radius: 8px;
-    }
-
-    #area-upload {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: #F1F1F1;
-        width: 442px;
-        height: 174px;
-        border: 3px dashed;
-    }
-
-    #formulario-envio {
-        display: flex;
-        flex-direction: column;
-        width: 442px;
-        height: 139px;
-        margin-top: 10px; 
-        background: #F1F1F1;
-        border-radius: 8px;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 22px;
-    }
-
-    #download-pic {
-        background: black;
-        width: 55px;
-        height: 55px;
     }
 
     hr {
@@ -98,6 +70,45 @@ export default {
         border-radius: 5px;
     }
 
+    #area-upload {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #F1F1F1;
+        width: 442px;
+        height: 174px;
+        padding: 15px;
+        border: 3px dashed;
+    }
+
+    #formulario-envio {
+        display: flex;
+        flex-direction: column;
+        width: 442px;
+        height: 139px;
+        padding: 15px;
+        margin-top: 10px; 
+        background: #F1F1F1;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    #formulario-envio .blue-bar {
+        position: absolute;
+        width: 260px;
+        height: 42px;
+        bottom: 6%;
+        left: 40%;
+    }
+
+    #download-pic {
+        background: black;
+        width: 55px;
+        height: 55px;
+    }
+
     .blue-bar {
         display: flex;
         justify-content: center;
@@ -117,14 +128,6 @@ export default {
     .two {
         width: 123px;
         height: 33px;
-    }
-
-    #formulario-envio .blue-bar {
-        position: absolute;
-        width: 260px;
-        height: 42px;
-        bottom: 16%;
-        left: 40%;
     }
 
 </style>
