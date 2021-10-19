@@ -6,8 +6,12 @@
         </div>
         <div id="right-side">
             <div id="icons">
-                <figure id="download"></figure>
-                <figure id="trash"></figure>
+                <figure id="download">
+                    <img src="../assets/download.png" alt="dowload">
+                </figure>
+                <figure id="trash">
+                    <img src="../assets/trash.png" alt="trash">
+                </figure>
             </div>
             <span class="gray-date">11/03/2020</span>
         </div>
@@ -34,12 +38,20 @@ export default {
         border-radius: 8px;
     }
 
+    img {
+        width: 60%;
+        height: 60%;
+    }
+
     #icons {
         display: flex;
         flex-direction: row;
     }
 
     #icons figure {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 35px;
         height: 35px;
         background: rgba(46, 74, 125, 1);

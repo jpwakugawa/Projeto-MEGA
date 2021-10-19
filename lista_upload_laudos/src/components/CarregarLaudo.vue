@@ -3,7 +3,9 @@
         <p>Carregar Novo Laudo</p>
         <hr>
         <div id="area-upload">
-            <figure id="download-pic"></figure>
+            <figure id="download-pic">
+                <img src="../assets/upload.png" alt="upload">
+            </figure>
             <span>Arraste aqui</span><br>
             <span>ou</span>
             <div class="blue-bar">
@@ -43,6 +45,11 @@ export default {
         width: 520px;
         height: 520px;
         border-radius: 8px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
     }
 
     hr {
@@ -104,7 +111,6 @@ export default {
     }
 
     #download-pic {
-        background: black;
         width: 55px;
         height: 55px;
     }
