@@ -1,11 +1,14 @@
 <template>
   <div id="app">
-    <div id="nav" v-on:click="seila()">
+    <div id="nav">
       <!--<router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |-->
       <router-link to="/landing">Landing</router-link> |
       <router-link to="/login">Login</router-link> |
-      <router-link to="/administrativa">Tela Administrativa</router-link>
+      <router-link to="/administrativa">Tela Administrativa</router-link> |
+      <router-link to="/lista-pacientes">Lista Pacientes</router-link> |
+      <router-link to="/lista-laudos">Lista Laudos</router-link> | 
+      <router-link to="upload-laudos">Upload Laudos</router-link>
     </div>
     <router-view/>
   </div>

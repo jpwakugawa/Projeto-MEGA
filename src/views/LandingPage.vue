@@ -134,8 +134,8 @@
         <div id="contato" class="duvidas">
             <div class="wrapper">
                 <div class="duvidas-form">
-                    <input type="text" class="field" placeholder="Nome"><input type="text" class="field" placeholder="Email">
-                    <textarea type="text" class="field wide-field" placeholder="Como podemos ajudar? Envie sua dúvida"></textarea>
+                    <input type="text" class="duvidas-field" placeholder="Nome"><input type="text" class="duvidas-field" placeholder="Email">
+                    <textarea type="text" class="duvidas-field wide-field" placeholder="Como podemos ajudar? Envie sua dúvida"></textarea>
                     <button class="duvidas-send">Enviar Mensagem</button>
                 </div>
             </div><div class="wrapper">
@@ -597,7 +597,7 @@ export default {
         float: left;
     }
 
-    .field {
+    .duvidas-field {
         display: inline-block;
         height: 52px;
         width: 340px;
@@ -612,11 +612,11 @@ export default {
         font-size: 20px;
     }
 
-    .field:first-child {
+    .duvidas-field:first-child {
         margin: 0;
     }
 
-    .field::placeholder {
+    .duvidas-field::placeholder {
         color: #909090;
     }
 

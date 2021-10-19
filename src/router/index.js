@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Login from '../views/Login.vue'
 import LandingPage from '../views/LandingPage.vue'
 import TelaAdministrativa from '../views/TelaAdministrativa.vue'
+import TelaListaPacientes from '../views/TelaListaPacientes.vue'
+import ListaLaudos from '../views/ListaLaudos.vue'
+import UploadLaudos from '../views/UploadLaudos.vue'
 
 Vue.use(VueRouter)
 
@@ -12,7 +14,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: LandingPage
   },
   {
     path: '/about',
@@ -36,6 +38,21 @@ const routes = [
     path: '/administrativa',
     name: 'Tela Administrativa',
     component: TelaAdministrativa
+  },
+  {
+    path: '/lista-pacientes',
+    name: 'Lista Pacientes',
+    component: TelaListaPacientes
+  },
+	{
+    path: '/lista-laudos',
+    name: 'Lista de Laudos',
+    component: ListaLaudos
+	},
+  {
+    path: '/upload-laudos',
+    name: 'Upload Laudos',
+    component: UploadLaudos
   }
 ]
 

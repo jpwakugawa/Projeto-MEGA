@@ -20,7 +20,7 @@
 			<EditarPaciente v-if="editaPaciente" v-bind:id="pacienteEditado.id" v-bind:nome="pacienteEditado.nome" v-bind:cpf="pacienteEditado.cpf" v-on:close="editaPaciente = false" v-on:atualiza="listaPacientes()"/>
 		</transition>
 		<transition name="modal">
-			<DeletePrompt v-if="deleteP" v-bind:id="deleteId" v-on:close="deleteP = false" v-on:deleteUser="deletarUser($event)"/>
+			<DeletePrompt v-if="deleteP" v-bind:id="deleteId" v-on:close="deleteP = false" v-bind:tipo="'paciente'" v-on:deleteUser="deletarUser($event)"/>
 		</transition>
 	</div>
 </template>

@@ -1,7 +1,7 @@
 <template>
     <div class="prompt-out" v-on:click="$emit('close')">
         <div class="prompt" v-on:click.stop>
-            <figure class="warning"></figure> <span class="warning-text">Quer realmente excluir este paciente?</span>
+            <figure class="warning"></figure> <span class="warning-text">Quer realmente excluir este {{ tipo }}?</span>
             <button class="prompt-button sim" v-on:click="confirm()">Sim</button>
             <button class="prompt-button nao" v-on:click="$emit('close')">Não</button>
         </div>
@@ -11,7 +11,8 @@
 <script>
 export default {
     props: {
-        id: Number
+        id: Number,
+        tipo: String
     },
     methods: {
         confirm () {
