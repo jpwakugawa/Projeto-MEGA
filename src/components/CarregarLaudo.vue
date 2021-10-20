@@ -3,12 +3,13 @@
         <p>Carregar Novo Laudo</p>
         <hr>
         <div id="area-upload">
-            <img src="../assets/upload.png" alt="upload" id="download-pic">
+            <img src="../assets/upload.png" alt="upload" id="download-pic" v-on:click="download()">
             <span class="download-subtitle">Arraste aqui<br>
             ou</span>
-            <button class="blue-bar">
-                Escolha um arquivo
-            </button>
+            <label for="laudo" class="blue-bar">
+                {{ mensagem }}
+            </label>
+            <input id="laudo" type="file" class="inv" v-on:change="handleFile($event)">
         </div>
         <div class="formulario-envio">
             <span>Nome do Laudo</span>
@@ -20,7 +21,7 @@
             <div class="formulario-envio small-form">
                 <input type="text" class="two">
             </div>
-            <button class="blue-button">
+            <button v-on:click="submitFile()" class="blue-button">
                 Enviar Laudo
             </button>
         </div>
@@ -29,7 +30,29 @@
 
 <script>
 export default {
-    
+    data () {
+        return {
+            mensagem: 'Escolha um arquivo',
+            laudo: {}
+        }
+    },
+    methods: {
+        handleFile (file) {
+            this.mensagem = file.target.files[0].name;
+            this.laudo = file.target.files[0];
+        },
+        async submitFile () {
+            let formData = new FormData();
+            formData.append('file', this.laudo);
+            try {
+                this.$http.post('http://localhost:3000/upload-laudo', formData, { headers: {'Content-Type': 'multipart/form-data'} });
+            } catch (error) {
+                console.log(error);
+            } finally {
+                console.log("sucesso");
+            }
+        }
+    }
 }
 </script>
 
@@ -73,6 +96,10 @@ export default {
         font-size: 16px;
         line-height: 22px;
         box-sizing: border-box;
+    }
+
+    .inv {
+        display: none;
     }
 
     .row-form {
@@ -133,13 +160,17 @@ export default {
         height: 34px;
         border-radius: 8px;
         color: white;
-        background: rgba(46, 74, 125, 1);
+        background-color: #2E4A7D;
         font-family: 'Nunito', sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 14px;
         line-height: 19px;
         border: none;
+    }
+
+    .blue-bar:active {
+        background-color: #172d57;
     }
 
     .blue-button {
@@ -159,11 +190,15 @@ export default {
         margin: 14px 0 0 15px;
     }
 
+    .blue-button:active {
+        background-color: #172d57;
+    }
+
     .one {
         width: 393px;
         height: 33px;
         display: block;
-        margin-bottom: 12px;
+        margin-bottom: 6px;
     }
 
     .two {

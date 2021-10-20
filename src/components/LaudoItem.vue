@@ -6,7 +6,7 @@
         </div>
         <div id="right-side">
             <div id="icons">
-                <figure id="download"></figure>
+                <figure id="download" v-on:click="download()"></figure>
                 <figure id="trash"></figure>
             </div>
             <span class="gray-date">11/03/2020</span>
@@ -16,7 +16,23 @@
 
 <script>
 export default {
-    
+    methods: {
+        async download () {
+            try {
+                let {data} = await this.$http.get(`http://localhost:3000/download-laudo?filename=${'50026cee3a0b77655fa5287bcf54c44c'}`, { responseType: 'blob' });
+                console.log(data);
+                const link = document.createElement('a')
+                link.href = URL.createObjectURL(data)
+                link.download = 'laudo.png'
+                link.click()
+                URL.revokeObjectURL(link.href)
+            } catch (error) {
+                console.log(error)
+            } finally {
+                console.log("funfou")
+            }
+        }
+    }
 }
 </script>
 
