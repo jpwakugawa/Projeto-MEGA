@@ -1,24 +1,20 @@
-# duck-health-vue
+# Duck Health
 
-## Project setup
-```
-npm install
-```
+## Sobre
+Projeto em Vue feito pela equipe MegaBaito para o processo seletivo da Mega Jr.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Tecnologias usadas
+Para o desenvolvimento do front end deste projeto foram usados:
++ HTML
++ CSS
++ Motor NodeJS com a framework VueJS.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Membros da Equipe:
++ Breno Ferreira
++ João Pedro Santos Vareiro
++ João Paulo Wakugawa
++ Marcos Henrique Arruda da Silva Medeiros
 
-### Lints and fixes files
-```
-npm run lint
-```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
