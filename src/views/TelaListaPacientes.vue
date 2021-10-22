@@ -3,8 +3,8 @@
         <BarraLateral/>
         <section class="navbar-paciente">
             <p class="filtrar-text">Filtrar por:</p>
-            <button class="botao-filtrar">
-                <p id="filtro">Meus <br>Pacientes</p>
+            <button class="botao-filtrar" v-on:click="alternate()">
+                <p id="filtro"> {{ botao }} </p>
                 <img id="check" src="../assets/check.svg" alt="check">
             </button>
             <p class="buscar-text">Buscar por:</p>
@@ -12,15 +12,15 @@
                 <figure id="search">
                     <img src="../assets/search.svg" alt="Lupa">
                 </figure>
-                <input type="text" placeholder="Fulano da Silva" id="pesquisa">
+                <input v-model="input" type="text" placeholder="Fulano da Silva" id="pesquisa" v-on:input="buscar()">
             </div>
             <img id="dr-img" src="../assets/doctor.png">
-            <p class="dr-name">Olá, <span id="med1">  {{nome}}</span><br> <span id="med2">Médico</span> </p>
+            <p class="dr-name">Olá, <span id="med1">  {{ $session.get('user-name') }}</span><br> <span id="med2">Médico</span> </p>
             <div id="line"></div>
         </section>
         <div class="area-wrapper">
             <div class="pacientes-area">
-                <paciente class="item" v-for="paciente in pacientes" v-bind:key="paciente.id" v-bind:nome="paciente.nome" v-bind:cpf="paciente.cpf"/>
+                <Paciente class="item" v-for="paciente in pacientes" v-bind:key="paciente.id" v-bind:paciente="paciente"/>
             </div>
         </div>
     </div>
@@ -33,7 +33,11 @@ import BarraLateral from '../components/BarraLateral.vue'
 export default {
     name: 'ListaPacientes',
     created: function () {
-        this.listaPacientes();
+		if (!this.$session.exists() || this.$session.get('access-level') == 'paciente') {
+			this.$router.push('/login');
+        } else {
+            this.listaPacientes();
+        }
     },
     components: {
         Paciente,
@@ -41,21 +45,56 @@ export default {
     },
     data() {
         return {
-            nome: "Dr. Hans Chucrute",
-            pacientes: []
+            pacientes: [],
+            input: '',
+            botao: 'Todos os Pacientes',
+            todos: true
         }
     },
     methods: {
+        alternate () {
+            if (this.todos) {
+                this.botao = 'Meus Pacientes';
+                this.todos = false;
+            } else {
+                this.botao = 'Todos os Pacientes';
+                this.todos = true;
+            }
+            this.listaPacientes();
+        },
         async listaPacientes () {
 			try {
-				const {data} = await this.$http.get('http://localhost:3000/pacientes');
-				this.pacientes = data;
+                if (this.todos) {
+                    const {data} = await this.$http.get('http://localhost:3000/pacientes');
+                    this.pacientes = data;
+                } else {
+                    const {data} = await this.$http.get(`http://localhost:3000/meus-pacientes?medico=${this.$session.get('user-name')}`);
+                    this.pacientes = data;
+                }
 			} catch (error) {
 				console.error(error);
 			} finally {
 				//console.log(this.pacientes);
 			}
-		}
+		},
+        async buscar () {
+            if (this.input.length > 0) {
+                try {
+                    let str = this.input.toLowerCase();
+                    if (this.todos) {
+                        const {data} = await this.$http.get(`http://localhost:3000/pacientes-busca?nome=${str}`);
+                        this.pacientes = data;
+                    } else {
+                        const {data} = await this.$http.get(`http://localhost:3000/meus-pacientes-busca?nome=${str}&medico=${this.$session.get('user-name')}`);
+                        this.pacientes = data;
+                    }
+                } catch (error) {
+                    console.error(error);
+                } finally {
+                    //console.log(this.pacientes);
+                }
+            }
+        }
     }
 }
 </script>

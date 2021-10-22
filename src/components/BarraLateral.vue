@@ -2,9 +2,9 @@
 <div class="tela-admin">
 	<div class="BarraLateral">
 		<img id="LogoDuckHealth" alt="Logo Duck Health" src="../assets/LogoDuck.png">
-		<button class="BotaoLogout">
+		<router-link to="/logout" class="BotaoLogout">
 			<img id="logout" alt="Voltar" src="../assets/logout.svg">
-		</button>
+		</router-link>
 	</div>
 </div>
 
@@ -52,6 +52,8 @@ export default {
 	border: none;
 	width: 55px;
 	height: 55px;
+	padding: 12.5px;
+	box-sizing: border-box;
 }
 .BotaoLogout:active{
 	background: #0c879d;

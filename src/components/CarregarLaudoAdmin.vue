@@ -14,6 +14,11 @@
         <div class="formulario-envio">
             <span>Nome do Laudo</span>
             <input type="text" class="one" v-model="nome">
+            <span>Nome do Médico</span>
+            <input type="text" class="three" v-model="medico" v-on:input="buscar()">
+            <div class="suggestion-container" v-if="suggest">
+                <Suggestion v-for="doctor in medicos" v-bind:key="doctor.id" v-bind:medico="doctor" v-on:chosen="chosen($event)"/>
+            </div>
 
             <span>Data</span>
         </div>
@@ -29,15 +34,19 @@
 </template>
 
 <script>
+import Suggestion from '../components/Suggestion.vue'
+
 export default {
     data () {
         return {
             mensagem: 'Escolha um arquivo',
             nome: '',
-            medico: this.$session.get('user-name'),
+            medico: '',
             idpaciente: this.$route.params.id,
             data: '',
-            laudo: {}
+            laudo: {},
+            medicos: [],
+            suggest: true
         }
     },
     methods: {
@@ -59,7 +68,30 @@ export default {
             } finally {
                 console.log("sucesso");
             }
+        },
+        async buscar () {
+            if (!this.suggest) {
+                this.suggest = true;
+            }
+            if (this.medico.length > 0) {
+                let str = this.medico.toLowerCase();
+                try {
+                    const {data} = await this.$http.get(`http://localhost:3000/medicos-busca?nome=${str}`);
+                    this.medicos = data;
+                } catch (error) {
+                    console.log(error)
+                }
+            } else {
+                this.medicos = [];
+            }
+        },
+        chosen (event) {
+            this.suggest = false;
+            this.medico = event;
         }
+    },
+    components: {
+        Suggestion
     }
 }
 </script>
@@ -94,9 +126,10 @@ export default {
     .formulario-envio {
         display: flex;
         flex-flow: column;
+        position: relative;
         width: 442px;
-        height: 98px;
-        padding: 15px 0 0 23px;
+        height: 143px;
+        padding: 4px 0 0 23px;
         margin-top: 10px; 
         background: #F1F1F1;
         border-radius: 8px 8px 8px 0px;
@@ -108,6 +141,14 @@ export default {
 
     .inv {
         display: none;
+    }
+
+    .suggestion-container {
+        width: 393px;
+        position: absolute;
+        top: 114px;
+        background-color: white;
+        z-index: 3;
     }
 
     .row-form {
@@ -206,12 +247,18 @@ export default {
         width: 393px;
         height: 33px;
         display: block;
-        margin-bottom: 6px;
     }
 
     .two {
         width: 123px;
         height: 33px;
+    }
+
+    .three {
+        width: 393px;
+        height: 33px;
+        display: block;
+        margin: 6px 0;
     }
 
     #formulario-envio .blue-bar {

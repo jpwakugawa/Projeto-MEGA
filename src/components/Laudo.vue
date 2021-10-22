@@ -1,25 +1,25 @@
 <template>
-		<div>
+		<div class="Laudo">
 			<div id="FundoLaudo">
 				<div id="CorpoLaudo">
 					<div id="CabecalhoLaudo">
-						<div id="TipoLaudo">Laudo do Eletrocardiograma</div>
+						<div id="TipoLaudo">Laudo do {{ laudo.nomelaudo }}</div>
 						<div id="Linha"></div>
 						<img id="IconeLaudo" src="../assets/IconeLaudo.svg">
 					</div>
 				<div id="MeioLaudo">
-					<div class = "NomeMedico">Dr.Hans Chucrute</div>
-					<div class = "TipoMedico">Médico Cardiologista</div>
+					<div class = "NomeMedico">{{ laudo.nome }}</div>
+					<div class = "TipoMedico">Médico {{ laudo.especialidade }}</div>
 				</div>
 			</div>
-			<button id = "BotaoBaixarLaudo">
-			<img id ="DownloadLaudo" src="../assets/download1.svg">
-			<p id="TXTDownloadLaudo">Baixar Laudo</p>
+			<button id="BotaoBaixarLaudo" v-on:click="baixar()">
+				<img id="DownloadLaudo" src="../assets/download1.svg">
+				<p id="TXTDownloadLaudo">Baixar Laudo</p>
 			</button>
 		<div id="FimLaudo">
 			<img id="Calendario" src="../assets/Calendar.svg">
 			<div id="Divider"></div>
-			<div class = "HorarioExame">24/03/2021 - 09:30 </div>
+			<div class = "HorarioExame">{{ laudo.data }} - 09:30 </div>
 			</div>
 		</div>
 	</div>
@@ -27,7 +27,27 @@
 
 <script>
 export default {
-
+	props: {
+		laudo: Object
+	},
+	created: function () {
+		//console.log(this.laudo);
+	},
+	methods: {
+		async baixar () {
+			try {
+                let {data} = await this.$http.get(`http://localhost:3000/download-laudo?filehash=${this.laudo.filehash}`, { responseType: 'blob' });
+                //console.log(data);
+                const link = document.createElement('a')
+                link.href = URL.createObjectURL(data)
+                link.download = this.laudo.filename
+                link.click()
+                URL.revokeObjectURL(link.href)
+            } catch (error) {
+                console.log(error)
+            }
+		}
+	}
 }
 </script>
 

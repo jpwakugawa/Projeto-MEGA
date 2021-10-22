@@ -34,7 +34,8 @@ import DeletePrompt from '../components/DeletePrompt.vue'
 export default {
 	name: 'ListaPacientes',
 	created: function () {
-		this.listaPacientes();
+		if (this.$session.exists())
+			this.listaPacientes();
 	},
 	data () {
 		return {

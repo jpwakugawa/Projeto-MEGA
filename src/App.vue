@@ -7,12 +7,27 @@
       <router-link to="/login">Login</router-link> |
       <router-link to="/administrativa">Tela Administrativa</router-link> |
       <router-link to="/lista-pacientes">Lista Pacientes</router-link> |
-      <router-link to="/lista-laudos">Lista Laudos</router-link> | 
-      <router-link to="upload-laudos">Upload Laudos</router-link>
+      <router-link to="/lista-laudos">Lista Laudos</router-link> |
+      <router-link to="/upload-laudos/28">Upload Laudos</router-link> |
+      <router-link to="/logout">Logout</router-link>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  created: function () {
+    if (this.$session.exists()) {
+      console.log("Já está logado");
+    } else {
+      if (this.$route.path != '/login') {
+        this.$router.push('/login');
+      }
+    }
+  }
+}
+</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');

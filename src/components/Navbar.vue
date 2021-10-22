@@ -9,7 +9,7 @@
         <figure id="dr-img">
             <img src="../assets/woman.png" alt="Woman">
         </figure>
-        <p class="dr-name">Olá, <span id="med1">  {{nome}} </span><br> <span id="med2">Médico</span> </p>
+        <p class="dr-name">Olá, <span id="med1">  {{$session.get('user-name')}} </span><br> <span id="med2">Médico</span> </p>
         <div id="line"></div>
 </section>
 
@@ -17,11 +17,6 @@
 
 <script>
 export default {
-    data () {
-        return {
-            nome: 'Nome'
-        }
-    }
 }
 </script>
 
@@ -33,7 +28,7 @@ export default {
         display: flex;
         position: absolute;
         padding: 0;
-        margin: 30px 0 0 0;
+        top: 23px;
         left: 214px;
         width: 1119px;
         height: 80px;
@@ -84,10 +79,12 @@ export default {
         border-radius: 8px;
         font-weight: 600;
         font-size: 16px;
+        font-family: 'Nunito', sans-serif;
         line-height: 22px;
         display: flex;
         align-items: center;
         color: rgba(0, 0, 0, 0.5);
+        padding-left: 13px;
     }
 
     #dr-img{

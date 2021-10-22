@@ -7,6 +7,8 @@ import TelaAdministrativa from '../views/TelaAdministrativa.vue'
 import TelaListaPacientes from '../views/TelaListaPacientes.vue'
 import ListaLaudos from '../views/ListaLaudos.vue'
 import UploadLaudos from '../views/UploadLaudos.vue'
+import UploadLaudosAdmin from '../views/UploadLaudosAdmin.vue'
+import Logout from '../views/Logout.vue'
 
 Vue.use(VueRouter)
 
@@ -50,9 +52,19 @@ const routes = [
     component: ListaLaudos
 	},
   {
-    path: '/upload-laudos',
+    path: '/upload-laudos/:id',
     name: 'Upload Laudos',
     component: UploadLaudos
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
+    component: Logout
+  },
+  {
+    path: '/upload-laudos-admin/:id',
+    name: 'Upload Laudos Admin',
+    component: UploadLaudosAdmin
   }
 ]
 

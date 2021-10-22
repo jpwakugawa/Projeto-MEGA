@@ -8,7 +8,7 @@
 			</div>
 		</div>
 		<div class="ContainerPaciente">
-			<div class ="SaudacaoPaciente">Olá,<span class="blue"> Elliot Alderson</span></div>
+			<div class ="SaudacaoPaciente">Olá,<span class="blue"> {{ $session.get('user-name') }}</span></div>
 			<img class="IconePaciente" src="../assets/patient.png">
 		</div>
 	</div>
@@ -17,7 +17,11 @@
 
 <script>
 export default {
-
+    filters: {
+        nome: function (value) {
+            return value.split(' ')[0];
+        }
+    }
 }
 </script>
 
@@ -32,7 +36,10 @@ export default {
 }
 .blue {
     white-space: pre;
+	width: 125px;
 	color: #2E4A7D;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .SaudacaoPaciente{
 	width: 162px;

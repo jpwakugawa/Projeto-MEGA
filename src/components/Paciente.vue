@@ -1,9 +1,9 @@
 <template>
-    <div class="paciente">
+    <div class="paciente" v-on:click="openLaudos()">
         <img src="../assets/cubos.png" alt="imagem de cubos">
         <img src="../assets/patient.png" class="paciente-img">
-        <p class="paciente-nome">{{ nome }}</p>
-        <p class="cpf">{{cpf | cpf}}</p>
+        <p class="paciente-nome">{{ paciente.nome }}</p>
+        <p class="cpf">{{paciente.cpf | cpf}}</p>
     </div>        
 </template>
 
@@ -15,15 +15,23 @@ export default {
         }
     },
     props: {
-        nome: String,
-        cpf: String
+        paciente: Object
     },
 	filters: {
 		cpf: function (value) {
 			var newCpf = value.slice(0,3) + "." + value.slice(3,6) + "." + value.slice(6,9) + "-" + value.slice(9,11);
 			return newCpf;
 		}
-	}
+	},
+    methods: {
+        openLaudos () {
+            if (this.$session.get('access-level') == 'medico') {
+                this.$router.push(`/upload-laudos/${this.paciente.id}`);
+            } else if (this.$session.get('access-level') == 'admin') {
+                this.$router.push(`/upload-laudos-admin/${this.paciente.id}`);
+            }
+        }
+    }
 }
 </script>
 
@@ -40,6 +48,7 @@ export default {
         border-radius: 20px;
         background: #FFFFFF;
         border-radius: 20px;
+        cursor: pointer;
     }
     /*imagem amarela no card*/
     .cubos {

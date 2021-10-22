@@ -15,6 +15,11 @@ import ContainerMedicos from '../components/ListaMedicos'
 
 export default {
 	name: 'TelaAdministrativa',
+	created: function () {
+		if (!this.$session.exists() || this.$session.get('access-level') != 'admin') {
+			this.$router.push('/login');
+		}
+	},
 	components: {
 		ContainerPacientes,
 		BarraLateral,

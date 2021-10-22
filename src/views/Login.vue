@@ -11,7 +11,8 @@
                 <div class="title-health">Health</div>
             </div>
         </div>
-        <div class="login">
+        <div class="login" v-on:keyup.enter="login()">
+            <p class="error" v-if="error">Usuário inexistente ou senha incorreta.</p>
             <h1 class="login-title">Bem-vindo</h1>
             <h2 class="login-subtitle">Acesse seus <span class="yellow">laudos</span> agora!</h2>
             <input v-model="cpf" class="login-input" type="text" placeholder="Escreva aqui seu CPF">
@@ -28,27 +29,59 @@ export default {
         return {
             cpf: '',
             senha: '',
-            response: {}
+            response: {},
+            error: false
+        }
+    },
+    created: function () {
+        if (this.$session.exists()) {
+            switch (this.$session.get('access-level')) {
+                case 'medico':
+                    this.$router.push('/lista-pacientes');
+                    break;
+                case 'admin':
+                    this.$router.push('/administrativa');
+                    break;
+                case 'paciente':
+                    this.$router.push('/lista-laudos');
+                    break;
+            }
         }
     },
     methods: {
         async login () {
             //autenticar login com o backend
-            try {
-                const user = {
-                    cpf: this.cpf,
-                    senha: this.senha
-                }
-                const {data} = await this.$http.post('http://localhost:3000/login', user);
-                this.response = data;
-            } catch (error) {
-                console.log(error);
-            } finally {
-                //login feito com sucesso
-                console.log(this.response);
-                if (this.response[0]) {
-                    console.log("sucesso");
-                    this.$router.push('/administrativa');
+            if (this.cpf.length > 0 && this.senha.length > 0) {
+                try {
+                    const user = {
+                        cpf: this.cpf,
+                        senha: this.senha
+                    }
+                    const {data} = await this.$http.post('http://localhost:3000/login', user);
+                    this.response = data;
+                } catch (error) {
+                    console.log(error);
+                } finally {
+                    //login feito com sucesso
+                    if (this.response[0]) {
+                        this.$session.start();
+                        this.$session.set('user-id', this.response[0].id);
+                        this.$session.set('user-name', this.response[0].nome);
+                        if (this.response[0].especialidade) {
+                            this.$session.set('access-level', 'medico');
+                            this.$router.push('/lista-pacientes');
+                        }
+                        else if (this.response[0].nome == 'Admin') {
+                            this.$session.set('access-level', 'admin');
+                            this.$router.push('/administrativa');
+                        }
+                        else {
+                            this.$session.set('access-level', 'paciente');
+                            this.$router.push('/lista-laudos')
+                        }
+                    } else {
+                        this.error = true;
+                    }
                 }
             }
         }
@@ -57,6 +90,16 @@ export default {
 </script>
 
 <style>
+
+    .error {
+        position: absolute;
+        background-color: #ff8f8f;
+        border: 1px red solid;
+        padding: 3px;
+        top: 130px;
+        color: black;
+        border-radius: 2px;
+    }
 
     .login-bg {
         position: relative;
@@ -69,6 +112,7 @@ export default {
     }
 
     .login {
+        position: relative;
         height: 500px;
         width: 500px;
         margin: 0 auto 0;

@@ -19,7 +19,7 @@ import LaudoItem from '../components/LaudoItem.vue'
 
 export default {
     created: function () {
-        if (this.$session.exists() && this.$session.get('access-level') != 'paciente') {
+        if (this.$session.exists() && this.$session.get('access-level') == 'admin') {
             this.loadInfo();
             this.loadLaudos();
         }

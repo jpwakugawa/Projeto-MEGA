@@ -2,29 +2,29 @@
   <div id="app">
     <BarraLateral/>
     <Navbar/>
-    <ListadeLaudos ref="listaLaudos"/>
-    <CarregarLaudo v-on:upload="triggerUpdate()"/>
+    <ListadeLaudosAdmin ref="listaLaudos"/>
+    <CarregarLaudoAdmin v-on:upload="triggerUpdate()"/>
   </div>
 </template>
 
 <script>
 import Navbar from "../components/Navbar.vue"
-import ListadeLaudos from "../components/ListadeLaudos.vue"
-import CarregarLaudo from "../components/CarregarLaudo.vue"
+import ListadeLaudosAdmin from "../components/ListadeLaudosAdmin.vue"
+import CarregarLaudoAdmin from "../components/CarregarLaudoAdmin.vue"
 import BarraLateral from '../components/BarraLateral.vue'
 
 export default {
   name: 'App',
   created: function () {
-		if (!this.$session.exists() || this.$session.get('access-level') == 'paciente') {
+		if (!this.$session.exists() || this.$session.get('access-level') != 'admin') {
 			this.$router.push('/login');
 		}
 	},
   components: {
     BarraLateral,
     Navbar,
-    ListadeLaudos,
-    CarregarLaudo
+    ListadeLaudosAdmin,
+    CarregarLaudoAdmin
   }
 }
 </script>
