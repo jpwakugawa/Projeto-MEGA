@@ -1,7 +1,7 @@
 <template>
 <div>
 	<BarraLateral/>
-	<TopoListas/>
+	<TopoListas v-on:busca="buscaLaudos($event)"/>
 	<div class="Conteudo">
 		<Laudo v-for="laudo in laudos" v-bind:key="laudo.id" v-bind:laudo="laudo"/>
 	</div>
@@ -40,6 +40,19 @@ export default {
             } catch (error) {
                 console.log(error);
             }
+        },
+		async buscaLaudos (str) {
+			if (str.length > 0) {
+				try {
+					const {data} = await this.$http.get(`http://localhost:3000/busca-laudos-paciente?idpaciente=${this.$session.get('user-id')}&str=${str}`);
+					this.laudos = data;
+					//console.log(data);
+				} catch (error) {
+					console.log(error);
+				}
+			} else {
+				this.loadLaudos();
+			}
         }
 	}
 }

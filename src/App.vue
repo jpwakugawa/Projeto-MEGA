@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div id="nav" v-if="admin">
       <!--<router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |-->
       <router-link to="/landing">Landing</router-link> |
@@ -19,11 +19,18 @@
 export default {
   created: function () {
     if (this.$session.exists()) {
-      console.log("Já está logado");
+      if (this.$session.get('access-level') == 'admin') {
+        this.admin = true;
+      }
     } else {
       if (this.$route.path != '/login') {
         this.$router.push('/login');
       }
+    }
+  },
+  data () {
+    return {
+      admin: false
     }
   }
 }

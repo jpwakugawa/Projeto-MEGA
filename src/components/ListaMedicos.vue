@@ -61,8 +61,8 @@ export default {
 				const user = {
 					userid: id
 				}
-				const {data} = await this.$http.post('http://localhost:3000/delete', user);
-				console.log(data);
+				await this.$http.post('http://localhost:3000/delete', user);
+				//console.log(data);
 			} catch (error) {
 				console.error(error);
 			} finally {

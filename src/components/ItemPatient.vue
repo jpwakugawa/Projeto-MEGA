@@ -4,7 +4,7 @@
 		<p class="nome-paciente">{{nome}}</p>
 		<p class="CPFPaciente">{{cpf | cpf}}</p>
 		<button class ="botao editar" v-on:click="$emit('edit-patient', paciente)">
-		<img src="../assets/Editar.svg">
+		<img src="../assets/Editar.svg" class="offset">
 		</button>
 		<button class ="botao excluir" v-on:click="$emit('delete', paciente.id)">
 		<img src="../assets/Excluir.svg">
@@ -38,6 +38,10 @@ export default {
 </script>
 
 <style scoped>
+
+.offset {
+	margin: 5px 0 0 5px;
+}
 
 .nome-paciente {
 	font-family: Nunito;

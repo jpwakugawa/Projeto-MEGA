@@ -30,9 +30,6 @@ export default {
 	props: {
 		laudo: Object
 	},
-	created: function () {
-		//console.log(this.laudo);
-	},
 	methods: {
 		async baixar () {
 			try {
@@ -79,7 +76,13 @@ color:#FFFF;
 	margin-top:13px;
 	background: #12AFCB;
 	border:none;
+	cursor: pointer;
 }
+
+#BotaoBaixarLaudo:active {
+	background-color: #078ca3;
+}
+
 #Divider{
 	height:22px;
 	width: 1px;

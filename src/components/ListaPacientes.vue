@@ -61,8 +61,8 @@ export default {
 				const user = {
 					userid: id
 				}
-				const {data} = await this.$http.post('http://localhost:3000/delete', user);
-				console.log(data);
+				await this.$http.post('http://localhost:3000/delete', user);
+				//console.log(data);
 			} catch (error) {
 				console.error(error);
 			} finally {
@@ -121,6 +121,7 @@ export default {
 	background: #2E4A7D;
 	border-radius: 20px;
 	border:none;
+	cursor: pointer;
 }
 
 .adicionar {

@@ -3,7 +3,7 @@
 		<div class="BarraPesquisaInteira">
 			<img class="IconeLupa" src="../assets/search2.svg">
 			<div class="Search">
-				<input type="text" class="field" placeholder="Laudo, Médico, Data">
+				<input type="text" class="field" placeholder="Laudo, Médico, Data" v-model="str" v-on:input="$emit('busca', str.toLowerCase())">
 				<div class="Linha"></div>
 			</div>
 		</div>
@@ -17,6 +17,11 @@
 
 <script>
 export default {
+	data () {
+		return {
+			str: ''
+		}
+	},
     filters: {
         nome: function (value) {
             return value.split(' ')[0];

@@ -2,7 +2,7 @@
     <div class="login-bg">
         <img class="bg-top" src="../assets/img_duck_health/bg-top.png" alt="">
         <img class="bg-bottom" src="../assets/img_duck_health/bg-bottom.png" alt="">
-        <div class="logo-wrapper">
+        <router-link class="logo-wrapper" to="/landing">
             <div class="logo-cont">
                 <img class="logo-img" src="../assets/img_duck_health/DuckHealth_PNG.png" alt="logo">
             </div>
@@ -10,7 +10,7 @@
                 <div class="title-duck">Duck</div>
                 <div class="title-health">Health</div>
             </div>
-        </div>
+        </router-link>
         <div class="login" v-on:keyup.enter="login()">
             <p class="error" v-if="error">Usuário inexistente ou senha incorreta.</p>
             <h1 class="login-title">Bem-vindo</h1>

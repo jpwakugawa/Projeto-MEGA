@@ -56,8 +56,6 @@ export default {
                 this.$http.post('http://localhost:3000/upload-laudo', formData, { headers: {'Content-Type': 'multipart/form-data'} });
             } catch (error) {
                 console.log(error);
-            } finally {
-                console.log("sucesso");
             }
         }
     }
