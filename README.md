@@ -14,7 +14,3 @@ Para o desenvolvimento do front end deste projeto foram usados:
 + João Pedro Santos Vareiro
 + João Paulo Wakugawa
 + Marcos Henrique Arruda da Silva Medeiros
-
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
